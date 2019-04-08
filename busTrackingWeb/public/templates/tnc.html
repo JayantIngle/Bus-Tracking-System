@@ -1,0 +1,394 @@
+<div class="headerwrap">
+		<header id="header" class="">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 main">
+						<div class="leftPane">
+							<div class="logowrp">
+								<a href="/" class="logo">
+									<img src="images/navfresh.png" alt="" />
+								</a>
+								<a class="loc">
+									<i>
+										<img src="https://static.zappfresh.com/images/loc-icon.png" alt="" />
+									</i>
+									<span>
+										<a data-pop="modalpop" id="userLocation" class="f12" title="">Indore</a>
+
+									</span>
+								</a>
+							</div>
+						</div>
+						<div class="rightPane">
+							<div class="generalhead">
+								<div class="headSearch">
+									<input type="text" class="srchInput" placeholder="Search chicken mutton etc" id="searchtext" onkeyup="searchkeyup()" onkeydown="searchkeydown()" onfocus="searchfocus()" onblur="searchblur()">
+									<button class="srchBtn" type="submit" style = "color: #337ab7">Search Food</button>
+
+									<!-- search results -->
+									<div class="searchResult" style="display: none;" id="searchdiv">
+										<ul id="searchresults">
+
+
+										</ul>
+										<div class="vwAll" onclick="removeresultspane()"><a href="#">Close</a></div>
+									</div>
+									<!-- search results -->
+
+								</div>
+								<nav class="dpInBLock">
+									<span class="forg menuWrp">
+										<span class="vmiddle" style = "color: #337ab7">OUR MENU</span>
+										<span class="caret" style = "color:#337ab7"></span>
+										<ul class="menu">
+											<li>
+												<i class="chicken"></i>
+												<a ui-sref = "productList({category: 'Raw', subcat: 'Chicken'})">Chicken</a>
+											</li>
+											<li>
+												<i class="mutton"></i>
+												<a ui-sref = "productList({category: 'Raw', subcat: 'Fish'})">Fish</a>
+											</li>
+											<li>
+												<i class="fish"></i>
+												<a ui-sref = "productList({category: 'Raw', subcat: 'Prawns'})">Prawns</a>
+											</li>
+											
+											<li>
+												<i class="marntd"></i>
+												<a ui-sref = "productList({category: 'Raw', subcat: 'Marinated'})">Marinated</a>
+											</li>
+
+										</ul>
+									</span>
+                                    <span class="forg menuWrp" ng-show = "loggedIn">
+										<span style = "color:#337ab7" class="vmiddle">HI, {{user.displayName}}</span>
+										<img class="dpInBLock vmiddle ic" src="https://static.zappfresh.com/images/arrow-orng.png" alt="" />
+										<ul class="menu">
+											<li>
+												<i class="chicken"></i>
+												<a ui-sref = "productList({category: 'Raw', subcat: 'Chicken'})">My orders</a>
+											</li>
+											<li>
+												<i class="mutton"></i>
+												<a ng-click = "logout();">Logout</a>
+											</li>
+											
+
+										</ul>
+									</span>
+									<span class="auth" ng-show = "!loggedIn">
+										<a ng-click = "showLoginModal()" data-pop="modalpop" class="authLogin" title="" style = "color:#337ab7">LOGIN/SIGNUP</a> 
+										
+									</span>
+									
+									<span class="quickclk">
+										<!-- mycart part -->
+										<div class="trig headCartTrig" data-custpopover="popover">
+											<a class="mycart" title="" ng-click="toggle()" style = "color:#337ab7">
+												<img src="https://static.zappfresh.com/images/cart-icon.png" alt="" />
+												<span>My Cart</span>
+												<b id="cartitemcount">{{myCartData.quantity}}</b>
+											</a>
+											<div class="popover animated flipInX" ng-show = "toggleHelp">
+												<div class="cartPopSummary" style = "width:100%;">
+													<div class="cartListwrp" id="cartlist" ng-show = "myCartData.quantity == 0">
+														<!-- List Item starts here -->
+														
+														
+														<div class="cartPopEmpty " id="cartpopempty">
+															<h2 class="f18 fMyrB">Shopping cart is empty</h2>
+															<hr>
+															<h4 class="f15 fMyr">Explore Categories</h4>
+															<ul>
+																<li>
+																	<a ui-sref = "productList({category: 'Raw', subcat: 'Chicken'})">
+																		<img src="https://static.zappfresh.com/images/cooking-today-icon1.png" alt="">
+																		<p class="ucase">Chicken</p>
+																	</a>
+																</li>
+																<li>
+																	<a href="/seafoods">
+																		<img src="https://static.zappfresh.com/images/cooking-today-icon2.png" alt="">
+																		<p class="ucase">Sea Food</p>
+																	</a>
+																</li>
+																<li>
+																	<a href="/mutton">
+																		<img src="https://static.zappfresh.com/images/cooking-today-icon3.png" alt="">
+																		<p class="ucase">Mutton</p>
+																	</a>
+																</li>
+																<li>
+																	<a href="/precooked">
+																		<img src="https://static.zappfresh.com/images/cooking-today-icon4.png" alt="">
+																		<p class="ucase">Precooked</p>
+																	</a>
+																</li>
+															</ul>
+														</div>
+														
+														<!-- List Item ends here -->
+													</div>
+													<div class="cartList row" ng-show = "myCartData.quantity != 0" id="proceedtocheckoutpart">
+                                                        <div ng-repeat = "item in myCartData.products track by item.name" class = "cartList row">
+                                                            <div class = 'col-md-2'><img src = "{{item.image}}" width = "50px"></div>
+                                                            <div class = 'col-md-7'>
+                                                                <div class = "col-md-12">
+                                                                    <p style = "font-size:130%;">{{item.name}}</p>
+                                                                </div>
+                                                                <div class = "col-md-12">
+                                                                    <div class="qtywrap" style = "margin-top:0;">
+                                                                        Quantity
+                                                                        <span>
+                                                                            <a class="qtychnger handp" title="" ng-click="itemDec(item.name)">-</a>
+                                                                            <span class="qtylbl" id="quantityproductdetail">{{item.quantity}}</span>
+                                                                            <a class="qtychnger handp" ng-click="itemInc(item.name)">+</a>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class = 'col-md-3'>
+                                                                <div class = "col-md-12">
+                                                                    <p style = "font-size:120%; font-weight:bold;">&#8377; {{item.price}}</p>
+                                                                </div>
+                                                                <div class = "col-md-12" style = "font-size:120%; padding-top:12%;">
+                                                                    
+                                                                    <span class = "glyphicon glyphicon-trash" ng-click = "removeItem(item.name)"></span>
+                                                                </div>
+                                                            </div>
+             
+                                                            <hr>
+                                                        </div>
+                                                        <hr>
+														<div class="col-md-9"><b class="f16 fnorm">Total payable amount</b></div>
+														<div class="col-md-3 f22 tright" id="itemnetpricecheckout">&#8377; {{myCartData.total}}</div>
+														<div class="clear20"></div>
+														<input type="button" name="" class="btn btn-primary wdFull" value="PROCEED TO CHECKOUT" tabindex="-1" ng-click="decide()" >
+													</div>
+												</div>
+											</div>
+
+										</div>
+
+										<div class="trig sideDrawwer" id="avatar" style="display:none">
+											<a href="#" title="" id="avatarpic"></a>
+										</div>
+									</span>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+	</div>
+
+<div style ="padding-top:100px;">
+    <br><br>
+    <div class = "container">
+        <div class = "row" >
+            <div class ="col-xs-12">
+                <h1 class = "text-center">Welcome to Navfresh</h1><br><br>
+	<p>These terms and conditions outline the rules and regulations for the use of Navfresh's Website.</p> <br /> 
+	
+	</address>
+	<p>By accessing this website we assume you accept these terms and conditions in full. Do not continue to use Navfresh's website 
+	if you do not accept all of the terms and conditions stated on this page.</p>
+	<p>The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice
+	and any or all Agreements: “Client”, “You” and “Your” refers to you, the person accessing this website
+	and accepting the Company’s terms and conditions. “The Company”, “Ourselves”, “We”, “Our” and “Us”, refers
+	to our Company. “Party”, “Parties”, or “Us”, refers to both the Client and ourselves, or either the Client
+	or ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake
+	the process of our assistance to the Client in the most appropriate manner, whether by formal meetings
+	of a fixed duration, or any other means, for the express purpose of meeting the Client’s needs in respect
+	of provision of the Company’s stated services/products, in accordance with and subject to, prevailing law
+	of . Any use of the above terminology or other words in the singular, plural,
+	capitalisation and/or he/she or they, are taken as interchangeable and therefore as referring to same.</p><h2>Cookies</h2>
+	<p>We employ the use of cookies. By using Navfresh's website you consent to the use of cookies 
+	in accordance with Navfresh’s privacy policy.</p><p>Most of the modern day interactive web sites
+	use cookies to enable us to retrieve user details for each visit. Cookies are used in some areas of our site
+	to enable the functionality of this area and ease of use for those people visiting. Some of our 
+	affiliate / advertising partners may also use cookies.</p><h2>License</h2>
+	<p>Unless otherwise stated, Navfresh and/or it’s licensors own the intellectual property rights for
+	all material on Navfresh. All intellectual property rights are reserved. You may view and/or print
+	pages from http://Navfresh.com for your own personal use subject to restrictions set in these terms and conditions.</p>
+	<p>You must not:</p>
+	<ol>
+		<li>Republish material from http://Navfresh.com</li>
+		<li>Sell, rent or sub-license material from http://Navfresh.com</li>
+		<li>Reproduce, duplicate or copy material from http://Navfresh.com</li>
+	</ol>
+	<p>Redistribute content from Navfresh (unless content is specifically made for redistribution).</p>
+<h2>Hyperlinking to our Content</h2>
+	<ol>
+		<li>The following organizations may link to our Web site without prior written approval:
+			<ol>
+			<li>Government agencies;</li>
+			<li>Search engines;</li>
+			<li>News organizations;</li>
+			<li>Online directory distributors when they list us in the directory may link to our Web site in the same
+				manner as they hyperlink to the Web sites of other listed businesses; and</li>
+			<li>Systemwide Accredited Businesses except soliciting non-profit organizations, charity shopping malls,
+				and charity fundraising groups which may not hyperlink to our Web site.</li>
+			</ol>
+		</li>
+	</ol>
+	<ol start="2">
+		<li>These organizations may link to our home page, to publications or to other Web site information so long
+			as the link: (a) is not in any way misleading; (b) does not falsely imply sponsorship, endorsement or
+			approval of the linking party and its products or services; and (c) fits within the context of the linking
+			party's site.
+		</li>
+		<li>We may consider and approve in our sole discretion other link requests from the following types of organizations:
+			<ol>
+				<li>commonly-known consumer and/or business information sources such as Chambers of Commerce, American
+					Automobile Association, AARP and Consumers Union;</li>
+				<li>dot.com community sites;</li>
+				<li>associations or other groups representing charities, including charity giving sites,</li>
+				<li>online directory distributors;</li>
+				<li>internet portals;</li>
+				<li>accounting, law and consulting firms whose primary clients are businesses; and</li>
+				<li>educational institutions and trade associations.</li>
+			</ol>
+		</li>
+	</ol>
+	<p>We will approve link requests from these organizations if we determine that: (a) the link would not reflect
+	unfavorably on us or our accredited businesses (for example, trade associations or other organizations
+	representing inherently suspect types of business, such as work-at-home opportunities, shall not be allowed
+	to link); (b)the organization does not have an unsatisfactory record with us; (c) the benefit to us from
+	the visibility associated with the hyperlink outweighs the absence of <?=$companyName?>; and (d) where the
+	link is in the context of general resource information or is otherwise consistent with editorial content
+	in a newsletter or similar product furthering the mission of the organization.</p>
+
+	<p>These organizations may link to our home page, to publications or to other Web site information so long as
+	the link: (a) is not in any way misleading; (b) does not falsely imply sponsorship, endorsement or approval
+	of the linking party and it products or services; and (c) fits within the context of the linking party's
+	site.</p>
+
+	<p>If you are among the organizations listed in paragraph 2 above and are interested in linking to our website,
+	you must notify us by sending an e-mail to <a href="mailto:navfresh.cc@gmail.com" title="send an email to navfresh.cc@gmail.com">navfresh.cc@gmail.com</a>.
+	Please include your name, your organization name, contact information (such as a phone number and/or e-mail
+	address) as well as the URL of your site, a list of any URLs from which you intend to link to our Web site,
+	and a list of the URL(s) on our site to which you would like to link. Allow 2-3 weeks for a response.</p>
+
+	<p>Approved organizations may hyperlink to our Web site as follows:</p>
+
+	<ol>
+		<li>By use of our corporate name; or</li>
+		<li>By use of the uniform resource locator (Web address) being linked to; or</li>
+		<li>By use of any other description of our Web site or material being linked to that makes sense within the
+			context and format of content on the linking party's site.</li>
+	</ol>
+	<p>No use of Navfresh’s logo or other artwork will be allowed for linking absent a trademark license
+	agreement.</p>
+<h2>Iframes</h2>
+	<p>Without prior approval and express written permission, you may not create frames around our Web pages or
+	use other techniques that alter in any way the visual presentation or appearance of our Web site.</p>
+<h2>Reservation of Rights</h2>
+	<p>We reserve the right at any time and in its sole discretion to request that you remove all links or any particular
+	link to our Web site. You agree to immediately remove all links to our Web site upon such request. We also
+	reserve the right to amend these terms and conditions and its linking policy at any time. By continuing
+	to link to our Web site, you agree to be bound to and abide by these linking terms and conditions.</p>
+<h2>Removal of links from our website</h2>
+	<p>If you find any link on our Web site or any linked web site objectionable for any reason, you may contact
+	us about this. We will consider requests to remove links but will have no obligation to do so or to respond
+	directly to you.</p>
+	<p>Whilst we endeavour to ensure that the information on this website is correct, we do not warrant its completeness
+	or accuracy; nor do we commit to ensuring that the website remains available or that the material on the
+	website is kept up to date.</p>
+<h2>Content Liability</h2>
+	<p>We shall have no responsibility or liability for any content appearing on your Web site. You agree to indemnify
+	and defend us against all claims arising out of or based upon your Website. No link(s) may appear on any
+	page on your Web site or within any context containing content or materials that may be interpreted as
+	libelous, obscene or criminal, or which infringes, otherwise violates, or advocates the infringement or
+	other violation of, any third party rights.</p>
+<h2>Disclaimer</h2>
+	<p>To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website (including, without limitation, any warranties implied by law in respect of satisfactory quality, fitness for purpose and/or the use of reasonable care and skill). Nothing in this disclaimer will:</p>
+	<ol>
+	<li>limit or exclude our or your liability for death or personal injury resulting from negligence;</li>
+	<li>limit or exclude our or your liability for fraud or fraudulent misrepresentation;</li>
+	<li>limit any of our or your liabilities in any way that is not permitted under applicable law; or</li>
+	<li>exclude any of our or your liabilities that may not be excluded under applicable law.</li>
+	</ol>
+	<p>The limitations and exclusions of liability set out in this Section and elsewhere in this disclaimer: (a)
+	are subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer or
+	in relation to the subject matter of this disclaimer, including liabilities arising in contract, in tort
+	(including negligence) and for breach of statutory duty.</p>
+	<p>To the extent that the website and the information and services on the website are provided free of charge,
+	we will not be liable for any loss or damage of any nature.</p>
+<h2></h2>
+	<p></p>
+<h2>Credit & Contact Information</h2>
+	<p>This Terms and conditions page was created at <a style="color:inherit;text-decoration:none;cursor:text;"
+		href="https://termsandconditionstemplate.com">termsandconditionstemplate.com</a> generator. If you have
+	any queries regarding any of our terms, please contact us.</p>		
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="mstickyfootBar">
+	<a class="mCatDropTrig" ng-click = "invertMobNav();"><i class="menuOrng"></i><span>CATEGORIES</span></a>
+	<a ng-click = "mobCartShowToggle();" class="mcartTrig"><i class="cartOrng"></i><span>CART</span><b id="mobilecartitemcount">{{myCartData.quantity}}</b></a>
+</div>
+<div class="mCategoryDrop animated slideInUp" style = "display:block;" ng-show = "mobNavShow">
+	<ul>
+		<a ui-sref = "productList({category: 'Raw', subcat: 'Chicken'})"><li><i class="chicken"></i><span>Chicken</span></li></a>
+		<a ui-sref = "productList({category: 'Raw', subcat: 'Fish'})"><li><i class="fish"></i><span>Fish</span></li></a>
+		<a ui-sref = "productList({category: 'Raw', subcat: 'Prawns'})"><li><i class="fish"></i><span>Prawns</span></li></a>
+		<a ui-sref = "productList({category: 'Raw', subcat: 'Marinated'})"><li><i class="marinated"></i><span>Marinated foods</span></li></a>
+		
+	</ul>
+</div>
+
+<!-- Mobile cart starts here-->
+
+<div class="mCategoryDrop animated slideInUp" style = "display:block; min-height:40%; max-height:65%; padding:20px;" ng-show = "mobCartShow">
+    <div ng-show = "myCartData.quantity != 0">
+        <div class = "row" ng-repeat = "item in myCartData.products" style = "padding-bottom:30px;">
+            <div class = "col-xs-3">
+                <img src = "{{item.image}}" width = "60px">
+            </div>
+            <div class = "col-xs-6">
+                <p>{{item.name}}</p>
+            </div>
+            <div class = "col-xs-3">
+                <p>{{item.price}}</p>
+            </div>
+                <div class = "col-xs-8">
+                        <div class="qtywrap" style = "margin-top:0;">
+                            Quantity
+                            <span>
+                                <a class="qtychnger handp" title="" ng-click="itemDec(item.name)">-</a>
+                                <span class="qtylbl" id="quantityproductdetail">{{item.quantity}}</span>
+                                <a class="qtychnger handp" ng-click="itemInc(item.name)">+</a>
+                            </span>
+                            <span class = "glyphicon glyphicon-trash pull-right" style = "margin-top:8px;" ng-click = "removeItem(item.name)"></span>
+                        </div>
+
+                </div>
+                <hr>
+        </div>
+        <div class = "row">
+            <br>
+            <div class = "col-xs-12">
+                <p><b>Total Payable amount : {{myCartData.total}}</b></p>
+                <button type = "button" class = "btn btn-primary btn-block" ng-click="decide()">Checkout</button>
+            </div>
+        </div>
+    </div>
+    <div class="cartListwrp" id="cartlist" ng-show = "myCartData.quantity == 0">
+														<!-- List Item starts here -->
+														
+														
+														<div class="cartPopEmpty " id="cartpopempty">
+															<h2 class="f18 fMyrB">Shopping cart is empty</h2>
+								
+														</div>
+														
+														<!-- List Item ends here -->
+													</div>
+	
+</div>

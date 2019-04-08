@@ -1,0 +1,758 @@
+
+	<!-- Application Header starts Here -->
+	<div class="headerwrap">
+		<header id="header" class="">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 main">
+						<div class="leftPane">
+							<div class="logowrp">
+								<a href="#" class="logo">
+									<img src="images/navfresh.png" alt="" />
+								</a>
+								<a class="loc">
+									<i>
+										<img src="images/loc-icon.png" alt="" />
+									</i>
+									<span>
+										<a href="#locationpop" data-pop="modalpop" id="userLocation" title="">Delhi NCR</a>
+									</span>
+								</a>
+							</div>
+						</div>
+						<div class="rightPane paymet">
+							<div class="generalhead">
+								<div class="headSearch">
+									<input type="text" class="srchInput" placeholder="Enter your text here">
+									<button class="srchBtn" type="submit">Search</button>
+									<span class="srchTrig">Search</span>
+								</div>
+								<nav class="dpInBLock">
+									<span class="forg menuWrp">
+										<span class="vmiddle">OUR MENU</span>
+										<img class="dpInBLock vmiddle ic" src="images/arrow-orng.png" alt="" />
+										<ul class="menu">
+											<li>
+												<a href="/chicken">Chicken</a>
+											</li>
+											<li>
+												<a href="/mutton">Mutton</a>
+											</li>
+											<li>
+												<a href="/seafoods">Sea Food</a>
+											</li>
+											<li>
+												<a href="/precooked">precooked</a>
+											</li>
+											<li>
+												<a href="/coldcuts">Cold Cuts</a>
+											</li>
+											<li>
+												<a href="/marinated">Marinated</a>
+											</li>
+										</ul>
+									</span>
+									<span class="auth">
+										<a href="#loginpop" data-pop="modalpop" class="authLogin" title="">LOGIN</a> / 
+
+										<a href="#signuppop" data-pop="modalpop" class="authSignup" title="">SIGNUP</a>
+									</span>
+									<span class="quickclk">
+										<div class="trig headCartTrig" data-custpopover="popover">
+											<a href="#" class="mycart" title="">
+												<img src="images/cart-icon.png" alt="" />
+												<span>My Cart</span>
+											</a>
+											<div class="popover">
+												<div class="cartPopSummary">
+													<div class="cartListwrp" id="cartlist">
+														<!-- List Item starts here -->
+														
+														
+														<div class="cartPopEmpty" id="cartpopempty">
+															<h2 class="f18 fMyrB">Shopping cart is empty</h2>
+															<hr>
+															<h4 class="f15 fMyr">Explore Categories</h4>
+															<ul>
+																<li>
+																	<a href="/chicken">
+																		<img src="images/cooking-today-icon1.png" alt="">
+																		<p class="ucase">Chicken</p>
+																	</a>
+																</li>
+																<li>
+																	<a href="/seafoods">
+																		<img src="images/cooking-today-icon2.png" alt="">
+																		<p class="ucase">Sea Food</p>
+																	</a>
+																</li>
+																<li>
+																	<a href="/mutton">
+																		<img src="images/cooking-today-icon3.png" alt="">
+																		<p class="ucase">Mutton</p>
+																	</a>
+																</li>
+																<li>
+																	<a href="/precooked">
+																		<img src="images/cooking-today-icon4.png" alt="">
+																		<p class="ucase">Precooked</p>
+																	</a>
+																</li>
+															</ul>
+														</div>
+														
+														<!-- List Item ends here -->
+													</div>
+													<div class="row cartList" id="proceedtocheckoutpart" style="display: none;">
+														<div class="col-md-9"><b class="f16 fnorm">Total payable amount</b></div>
+														<div class="col-md-3 f22 tright" id="itemnetpricecheckout">&#8377; </div>
+														<div class="clear20"></div>
+														<input type="button" name="" class="btn btn-primary wdFull" value="PROCEED TO CHECKOUT" tabindex="-1" onclick="checkout()" >
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="trig">
+											<a href="#" class="profile" title="">
+												<img src="images/user-profile.png" alt="" />
+												<b></b>
+											</a>
+										</div>
+										<div class="trig sideDrawwer">
+											<a href="#" title="">
+												<img src="images/menutrig-icon.png" alt="" />
+											</a>
+										</div>
+									</span>
+								</nav>
+							</div>
+							<div class="paymethead">
+								<div class="paymetheadwrp">
+									<div class="paymetSteps" ng-class = "{'active':showAddress}">
+										<i>1</i>
+										<span class="ucase f15">Address</span>
+										<span class="sep"></span>
+									</div>
+									<div class="paymetSteps" ng-class = "{'active':modeOn}">
+										<i>2</i>
+										<span class="ucase f15">payment</span>
+										<span class="sep"></span>
+									</div>
+									<div class="paymetSteps" ng-class = "{'active':success}">
+										<i>3</i>
+										<span class="ucase f15">Success</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+	</div>
+	<div class="hdcvr"></div>
+<div class = "clear30"></div>
+	<!-- Application Header Ends Here -->
+	<!-- Application Content starts Here -->
+	<div class="containerwrap">
+		<div class="container">
+			<div class="row">
+				<div class="clear20 mclear40"></div>
+				<div class="col-md-8 col-sm-12">
+
+					<!-- tmp block -->
+
+<!--<div id="tmploginblock">
+<p> Waiting for the Ui from javed sir, mean while at this step, if the user is not loggedin, we will take his email</p>
+<input type="text" id="tmploginemail" placeholder="email" ><input type="text" id="tmplogincell" placeholder="cellnumber" ><input type="button" value="submit" onclick="loginusernonpopup()">
+
+</div> -->
+<div class = "row">
+    <div class = "col-xs-12 col-md-6 ">
+        
+    </div>
+</div>
+
+<!-- tmp block end -->
+<div class="row addressblock" id="addressblock">
+	<div class="savedAddress" id="savedAddress" style="display:block">
+		<div class="svdAdrBlck">
+			<!-- Block For Saved Address start -->
+			<h4 class="ucase f14 fMyrB">{{heading}}</h4>
+			<div class="block wthBorder greybg slctDt" id="deliverydatetime" ng-show = "showDateSelection">
+				<div class="row">
+					<div class="col-md-6 wZro col-xs-12">
+						<div class="form-group">
+							<label class="Ucase">Date</label>
+							<input ng-click = "toggleCalendar();" class="" type="text" id="deliverydate" placeholder="{{inputShow}}">
+                            <div style = "width:130%;">
+                                <simple-calendar events="events" options="calendarOptions" ng-show = "showCalendar"></simple-calendar>
+                            </div>
+							<br>
+						</div>
+					</div>
+					<div class="col-md-6 col-xs-12" ng-show = "showTimeSlot">
+						<div class="form-group">
+							<label class="Ucase" id="timeslotlabel">Time</label>
+							<select ng-model = "selectedTime" >
+                                <option value = "Select Delivery time slot">Select Delivery time slot</option>
+								<option value = "9 AM to 12 noon" ng-disabled = "timeDisable.one">9 AM to 12 noon</option>
+								<option value = "12 noon to 3 PM" ng-disabled = "timeDisable.two">12 noon to 3 PM</option>
+								<option value = "3 PM to 6 PM" ng-disabled = "timeDisable.three">3 PM to 6 PM</option>
+								<option value = "6 PM to 10 PM" ng-disabled = "timeDisable.four">6 PM to 10 PM</option>
+							</select>
+						</div>
+					</div>
+                    
+                    <div class="col-md-8">
+						<button class="btn btn-primary datecontinue" type="button" ng-click="dateCheckout()">Continue</button>
+					</div>
+                    
+					<!--<div class="clear20"></div>
+					<div class="col-md-12">
+						<p>Or</p>	
+					</div>
+					<div class="clear20"></div>
+					<div class="col-md-12">
+						<div class="form-group">
+							<p class="radioFamily inline netbkning">
+								<label>
+									<input type="radio" name="netbankingtype" value="debit-credit"> 
+									<i></i>
+									<em>Deliver in 60 mins</em>
+								</label>
+							</p>
+						</div>
+					</div>-->
+
+					
+					<div class="col-md-12">
+						<p class="f18 clearfix"></p>
+						<p id="deliverychargemessage" class="dlvrymsg" style="display: none;"></p>
+						
+					</div>
+				</div>	
+			</div>
+
+			<div class="block wthBorder greybg addrBlck" id="address-2" ng-show = "!noAddress && showAddress">
+				<div class="row">
+					<div class="col-md-12 img-thumbnail" ng-repeat = "item in address">
+						<p class="f18 clearfix">
+                            <span class="addName" id="addressnametag-2"><b>{{item.name}} ({{item.type}})</b></span>
+							<!--<a href="#" class="editIcon fR" id="addressedit-2"></a>-->
+							<a ng-click = "removeAddress(item.id)" class="delIcon fR" id="addressdel-2"></a>
+						</p>
+						<hr>
+						<p id="addresslineline2city-2">{{item.fNo}} ,{{item.address}}</p>
+						<p id="addresspincodelandmark-2"> {{item.contact}}</p>
+						<div class="clear20"></div>
+						<button type="button" class="btn wdFull btn-primary tempdeliver" id="addressdeliverhere-2" ng-click = "modeOfPayment(item);">Continue</button>
+                        <div class = "clear30"></div>
+					</div>
+				</div>
+			</div>
+			<!-- Block For Saved Address end -->
+			<div class="block wthBorder greybg addNewAdr addrBlck" id="addnewaddressblock" ng-show = "showAddress">
+				<a data-toggle="modal" data-target="#myModal">
+					<i>+</i>
+					<p class="tcenter f18 fgreydark">Add Address</p>
+					<div class="clear30"></div>
+				</a>
+			</div>
+		</div>
+		
+		<div class="col-md-1"></div>
+	</div>
+	<!-- Block For New Address start -->
+    
+
+<!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title text-center"><b>ADD ADDRESS</b></h4>
+          </div>
+          <div class="modal-body">
+            <div class="block wthBorder">
+				<form ng-submit = "addAddress()">
+					<div class="form-group">
+						<label>Name</label>
+						<input ng-model = "formData.name" type="text" class="form-control" id="exampleInputEmail1" placeholder="First & Last Name">
+
+					</div>
+					<div class="form-group">
+						<label>Flat / House / Office No.</label>
+						<input ng-model = "formData.fNo" type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Flat / House / Office No.">
+
+					</div>
+					<div class="form-group">
+						<label>Address</label>
+						<input ng-model = "formData.address" type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Address">
+
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Pin code</label>
+								<input ng-model = "formData.pincode" type="number" class="form-control" id="exampleInputPassword1" placeholder="Enter Pin code">
+
+							</div>
+						</div>
+                        <div class="col-md-6">
+							<div class="form-group">
+								<label>Contact Number</label>
+								<input ng-model = "formData.contact" type="number" class="form-control" id="exampleInputPassword1" placeholder="Enter Contact Number">
+
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<p class="radioFamily inline">
+							<label>
+								<input ng-model = "formData.type" type="radio" name="newaddressinlineType" value="Home">
+								<i></i>
+								<em>Home</em>
+							</label>
+							<label>
+								<input ng-model = "formData.type" type="radio" name="newaddressinlineType" value="Office">
+								<i></i>
+								<em>Office</em>
+							</label>
+							<label>
+								<input ng-model = "formData.type" type="radio" name="newaddressinlineType" value="Other">
+								<i></i>
+								<em>Other</em>
+							</label>
+						</p>
+
+					</div>
+					<div class="clear20"></div>
+					<div class="row">
+						<div class="col-md-12">
+							<button type="submit" class="btn btn-primary wdFull">Add Address</button>
+						</div>
+					</div>
+					<div class="clear10"></div>
+				</form>
+			</div>
+          </div>
+          
+        </div>
+
+      </div>
+    </div>
+    
+	<!-- Block For New Address end -->
+</div>
+<div class = "orderSuccess" ng-show = success>
+    <div class="row">
+				<div class="clear40 mclear60"></div>
+				<div class="col-md-1 mtcenter col-sm-12"><i class="tickCircleBig"></i></div>
+				<div class="col-md-11 col-sm-12 fMyrB fgreydark">
+					<div class="clear5 mclear15"></div>
+					<p class="f35 mf20 fgreen fMyr mtcenter">Congrats! Your order is placed</p>
+					<div class="mclear15"></div>
+				</div>
+    </div>
+    
+    <div class="col-md-4 col-sm-12">
+					<div class="mclear20"></div>
+                    <!--
+					<div class="block wthBorder greybg">
+						<div class="row">
+							<div class="col-md-12">
+								<h4 class="f15 fMyrB ucase">Delivery Address</h4>
+								<p class="f18" id="statuscheckpagenametag"></p>
+								<p id="statuscheckpageaddress"> </p>
+							</div>
+						</div>
+					</div>
+                    -->
+					<div class="block wthBorder">
+						<div class="row">
+							<div class="col-md-12">
+								<h4 class="f15 fMyrB ucase">HAVE AN ISSUE ?</h4>
+								<p>We are here to help you. Contact our customer care we will get back to you as soon as possible </p>
+								<div class="clear20"></div>
+								<p><span class="fgreyteel fgoth"><b>Call/Whatsapp : </b></span><span class="fgreydark f15 fMyrB">901 555 33 22</span></p>
+								<p><span class="fgreyteel fgoth"><b>Or Call  : </b></span><span class="fgreydark f15 fMyrB">977 351 19 19</span></p>
+								<p><span class="fgreyteel fgoth"><b>Email : </b></span><span class="fgreydark f15 fMyrB">info@zappfresh.com</span></p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+</div>
+                    
+<div class="row paymentBlock" ng-show = "modeOn" id="paymentBlock">
+	<!-- Block For payment block start -->
+	<div class="col-md-11 col-sm-12">
+		<h4 class="ucase f14 fMyrB">Delivery Address <a href="#" class="fR fgreydark" title="" onclick="changeaddressagain()" >change Address</a> </h4>
+		<div class="row">
+			<div class="col-md-12 img-thumbnail">
+				<p class="f18 clearfix"></p>
+                <p id="paymentpageaddresstodisplay">{{selectedAddress.fNo}} ,{{selectedAddress.address}} &nbsp; <b>{{selectedAddress.contact}}</b></p>
+				<hr>
+			</div>
+		</div>
+
+		<div class="clear30"></div>
+
+		<!--   time slot -->
+
+		<!-- time slot ends -->
+
+		<!-- Partner Section starts here -->
+		<div class="block wthBorder greybg img-thumbnail" id="notsufficientbalancepart">
+			<div class="row">
+				<div class="col-md-12" id="paymentbuttoninitforsubmit">
+					<h3 class="ucase f14 fMyrB">Payment Options</h3>
+					<div class="form-group">
+						<p class="radioFamily inline netbkning">
+							<label>
+								<input type="radio" name="payradiotype" value="cod" ng-model = "cod"> 
+								<i></i>
+								<em>COD</em>
+							</label>
+
+							<label>
+                                <p>Currently we support only cash on delivery option.</p>
+							</label>
+
+						</p>
+					</div>
+					<button type="button" class="btn btn-primary" ng-click="placeOrder()">Place Order</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="block wthBorder greybg" id="sufficientbalancepart" style="display:none">
+			<div class="row">
+				<div class="col-md-12">
+					<h3 class="ucase f14 fMyrB">Sufficient Zapp Credits</h3>
+					<div class="form-group">
+						You have sufficent balance in your Zapp Credits.  
+					</div>
+					<button type="button" class="btn btn-primary" ng-click="placeOrder()">place Order</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- <div class="containerwrap greybg">
+			<div class="clear80"></div>
+			<div class="container">
+				
+			</div>
+			<div class="clear80"></div>
+			<div class="clear10"></div>
+		</div> -->
+		<!-- Partner Section ends here -->
+
+		<div class="clear30"></div>
+		<!-- Block For payment block end -->
+	</div>
+	<div class="col-md-1 col-sm-12"></div>
+</div>
+</div>
+
+
+<div class="col-md-4 col-sm-12 img-thumbnail" ng-show = "netTotal">
+	<h4 class="">Order Summary</h4>
+	<div class="block wthBorder greybg">
+		<div class="row">
+			<div class=" col-md-12" id="cartpopulate">
+                <div ng-repeat = "item in myCartData.products track by item.name">
+                    <p style = "font-size:115%;"><img src = "{{item.image}}" width = "30px">&nbsp;  {{item.name}} <span class = "pull-right">&#8377; {{item.price}}</span></p>
+                    <p style = "color:grey">Quantity - {{item.quantity}}</p>
+                    <div class = "clear20"></div>
+                </div>
+                <hr>
+                <div>
+                    <p style = "font-size:120%; color:grey;">Sub Total (Inclusive of all taxes) <span class = "pull-right">&#8377; {{myCartData.total}}</span></p>
+                    <p style = "font-size:120%; color:grey;">Delivery Charge <span class = "pull-right">&#8377; 0</span></p>
+                </div>
+                <hr>
+                <div class = "clear10"></div>
+                <div>
+                    <p><span><b style = "font-size:120%; color:grey;">NET TOTAL</b> </span> <span style = "font-size:125%;" class = "pull-right">&#8377; <b>{{myCartData.total}}</b></span></p>
+                </div>
+			</div>
+		</div>		
+	</div>
+	<div class="clear20"></div>
+	<div class="block wthBorder greybg">
+		<div class="row">
+			<div class="col-md-12">
+				<h4 class="f15 fMyrB">Have a Promocode? Apply Here! </h4>
+
+				<div class="form-group posrel">
+					<input type="text" class="whitebg form-control" id="couponcode" placeholder="Enter Promo Code">
+					<span class="absLnk forg" onclick="appplycouponcode()" style="cursor:pointer">Apply</span>
+					<p class="f12 fgreen" id="couponsuccessmessage"></p>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="clear20"></div>
+	<!--<h4 class="ucase f14 fMyrB">We accept</h4>
+	<div class="weaccept">
+		<ul>
+			<li class="maestro"></li>
+			<li class="visa"></li>
+			<li class="master"></li>
+			<li class="amex"></li>
+			<li class="dinerclub"></li>
+			<li class="discover"></li>
+			<li class="rupay"></li>
+		</ul>
+	</div>-->
+	
+
+</div>
+</div>
+</div>
+
+
+
+
+
+<!-- Application Content ends Here -->
+
+<div class="modalpopup newaddModal" id="newaddPop">
+	<div class="modalbody">
+		<a href="#" class="cls"></a>
+		<div class="newAddress">
+			<div class="block wthBorder">
+				<h4 class="ucase f14 fMyrB">Add Address</h4>
+				<form>
+					<div class="form-group">
+						<label>Name</label>
+						<input type="text" class="form-control" id="addressusername" placeholder="First & Last Name">
+
+					</div>
+
+					<div class="form-group">
+						<label>Contact Number</label>
+						<input type="text" class="form-control" id="addresscellnumber" placeholder="Contact Number">
+
+					</div>
+
+					<div class="form-group">
+						<label>Flat / House / Office No.</label>
+						<input type="text" class="form-control" id="addressfirstline" placeholder="Enter Flat / House / Office No.">
+
+					</div>
+					<div class="form-group">
+						<label>Locality</label>
+						<input type="text" class="form-control" id="addresssecondline" placeholder="Enter Address">
+
+					</div>
+					<div class="form-group">
+						<label>landmark</label>
+						<input type="text" class="form-control" id="addresslandmarkline" placeholder="Landmark">
+
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>City</label>
+								<input type="text" class="form-control"  id="addresscitytoshow" readonly />
+								<!--<select id="addresscity">
+									<option value="0">Select City</option>
+									<option value="delhi">Delhi</option>
+									<option value="gurgaon">Gurgaon</option>
+								</select>-->
+
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group" style="display:none;">
+								<label>Pin code</label>
+								<input type="text" class="form-control" id="addresspincode" placeholder="Enter Pin code">
+
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<p class="radioFamily inline" id="addresstyperadioid">
+							<label>
+								<input type="radio" name="inlineType" value="Home"> 
+								<i></i>
+								<em>Home</em>
+							</label>
+							<label>
+								<input type="radio" name="inlineType" value="Office"> 
+								<i></i>
+								<em>Office</em>
+							</label>
+							<label>
+								<input type="radio" name="inlineType" value="Other" checked="checked"> 
+								<i></i>
+								<em>Other</em>
+							</label>
+						</p>
+
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<button type="button" class="btn btn-primary wdFull" onclick="addaddress()">Add Address</button>
+						</div>
+					</div>
+					<div class="clear10"></div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Footer section starts here -->
+<footer>
+	<div class="footerPane">
+		<div class="containerwrap ">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3 footlogo">
+						<img src="https://static.zappfresh.com/images/footer-logo.png" alt="" />
+					</div>
+					<div class="col-md-4 links">
+						<div class="col-md-6 aboutlnks">
+							<a href="/about-us.html">About Us</a>
+							<a href="/faq.html">FAQ</a>
+							<a href="/privacy-policy.html">Privacy Policy</a>
+							<a href="/terms-and-conditions.html">Terms and Conditions</a>
+							<a href="/why-choose-us.html">Why Choose Us</a>
+							<a href="/quality.html">Quality Measures</a>
+							<a href="/blog">Blog</a>
+						</div>
+						<div class="col-md-6 catlnks">
+							<h3><a href="/chicken">Chicken</a></h3>
+							<h3><a href="/mutton">Mutton</a></h3>
+							<h3><a href="/seafoods">Seafoods</a></h3>
+							<h3><a href="/precooked">Precooked Meat</a></h3>
+							<h3><a href="/coldcuts">Cold Cuts</a></h3>
+							<h3><a href="/marinated">Marinated</a></h3>
+						</div>
+					</div>
+					<div class="col-md-5 tright sponsrlogo">
+						<img src="images/sponsers.png" alt="" />
+					</div>
+				</div>
+				<div class="clear30"></div>
+			</div>
+		</div>
+		<div class="container copywrap">
+			<div class="clear20"></div>
+			<p class="copyright">© 2017, Zappfresh - Farm Fresh Chicken, Mutton, Seafood & Fish Home Delivery</p>
+			<div class="clear30"></div>
+		</div>
+		<div class="mclear45"></div>
+	</div>
+</footer>
+
+<!-- Footer section starts here -->
+<div class="modal-overlay"></div>
+<!-- Footer section ends here -->
+
+<div id="cartpopulatetemplate" style="display:none">
+
+	<div class="row">
+		<div class="col-md-8">
+			<p class="f15">@itemname@</p>
+			<small class="f13 fgreycoin">@itemdesc@</small>
+			<div class="clear10"></div>
+			<p class="fgreycoin">Quantity : 
+				<span class="form-group qntychangefld editable">
+					<a class="minus" href="#" onclick="addtocartpaymentpage('@pidsub@','-1')">-</a>
+					<input type="text" readonly class="form-control" value="@quantity@" />
+					<a class="plus" href="#"  onclick="addtocartpaymentpage('@pidadd@','1')">+</a>
+				</span>
+				<a href="#" class="editIcon qntychangeIcn" style="display:none"></a>
+			</p>
+		</div>
+		<div class="col-md-4 tright f18">&#8377; @totalitemprice@</div>
+	</div>
+
+</div>
+
+
+
+<div id="cartpopulateamountsummarytemplate" style="display:none">
+
+	<div class="col-md-12"><hr></div>
+	<div class="col-md-8 f18 fgreyteel col-md-9-copy">
+		<p>Sub Total</p>
+		<div class="clear10"></div>
+		<p>Taxes</p>
+		<div class="clear10"></div>
+		<p>Delivery Charges</p>
+		<div class="clear10"></div>
+		<p>Net Total</p>
+		<div class="clear10"></div>
+		<p>Zapp Credits</p>
+		<div class="clear10"></div>
+		<p>Discount</p>
+		<div class="clear10"></div>
+		
+	</div>
+	<div class="col-md-4 f18 fgreyteel col-md-3-copy">
+		<p class="tright">&#8377; @netpricewithouttaxes@</p>
+		<div class="clear10"></div>
+		<p class="tright">&#8377; @taxes@</p>
+		<div class="clear10"></div>
+		<p class="tright">&#8377; @deliverycharge@</p>
+		<div class="clear10"></div>
+		<p class="tright">&#8377; @netprice@</p>
+		<div class="clear10"></div>
+		<p class="tright">&#8377; @walletbalance@</p>
+		<div class="clear10"></div>
+		<p class="tright">&#8377; @discount@</p>
+	</div>
+	<div class="col-md-12"><hr></div>
+	<div class="col-md-7 f18 fgreyteel">
+		<p>Payable Amount</p>
+	</div>
+	<div class="col-md-5 tright f26 fgreydark fMyrB">
+		<p>&#8377; @payableamount@</p>
+	</div>
+
+</div>
+
+
+
+<form action="" id="paymentform" method="post" name="payuForm">
+	<input type="hidden" name="key" id="txnkey" value="" />
+	<input type="hidden" name="hash" id="txnhash" value="" />
+	<input type="hidden" name="txnid" id="txnid" value="" />
+	<input type="hidden" name="amount" id="txnamount" value="" />
+	<input type="hidden" name="firstname" id="txnfirstname" value="" />
+	<input type="hidden" name="email" id="txnemail" value="" />
+	<input type="hidden" name="phone" id="txnphone" value="" />
+	<input type="hidden" name="productinfo" id="txnproductinfo" value="" size="64" />
+	<input type="hidden" name="surl" id="txnsurl" value="" size="64" />
+	<input type="hidden" name="furl" id="txnfurl" value="" size="64" />
+	<input type="hidden" name="pg" id="pg_default_payu" value="CC" size="64" />
+	<input type="hidden" name="drop_category" id="drop_category_payu" value="EMI,CASH" size="64" />
+</form>
+
+
+<form action="" id="mobikwikpaymentform" method="post" name="mobikwikpaymentform">
+	<input type="hidden" name="email" id="mbkemail" value="" />
+	<input type="hidden" name="amount" id="mbkamount" value="" />
+	<input type="hidden" name="cell" id="mbkcell" value="" />
+	<input type="hidden" name="orderid" id="mbkorderid" value="" />
+	<input type="hidden" name="mid" id="mbkmid" value="" />
+	<input type="hidden" name="redirecturl" id="mbkredirecturl" value="" />
+	<input type="hidden" name="checksum" id="mbkchecksum" value="" />
+
+</form>
+
+<div class="spinner" style="display: none" id="spinner">
+<img src="https://static.zappfresh.com/images/ajax-loader.gif" style="top: 50%;position: relative;" />
+</div>
+

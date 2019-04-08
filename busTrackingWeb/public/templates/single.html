@@ -1,0 +1,441 @@
+<div cg-busy="myPromise"></div>
+<div class="headerwrap">
+		<header id="header" class="">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 main">
+						<div class="leftPane">
+							<div class="logowrp">
+								<a href="/" class="logo">
+									<img src="images/navfresh.png" alt="" />
+								</a>
+								<a class="loc">
+									<i>
+										<img src="https://static.zappfresh.com/images/loc-icon.png" alt="" />
+									</i>
+									<span>
+										<a data-pop="modalpop" id="userLocation" class="f12" title="">Indore</a>
+
+									</span>
+								</a>
+							</div>
+						</div>
+						<div class="rightPane">
+							<div class="generalhead">
+								<div class="headSearch">
+									<input type="text" class="srchInput" placeholder="Search chicken mutton etc" id="searchtext" onkeyup="searchkeyup()" onkeydown="searchkeydown()" onfocus="searchfocus()" onblur="searchblur()">
+									<button class="srchBtn" type="submit" style = "color: #337ab7">Search Food</button>
+
+									<!-- search results -->
+									<div class="searchResult" style="display: none;" id="searchdiv">
+										<ul id="searchresults">
+
+
+										</ul>
+										<div class="vwAll" onclick="removeresultspane()"><a href="#">Close</a></div>
+									</div>
+									<!-- search results -->
+
+								</div>
+								<nav class="dpInBLock">
+									<span class="forg menuWrp">
+										<span class="vmiddle" style = "color: #337ab7">OUR MENU</span>
+										<span class="caret" style = "color:#337ab7"></span>
+										<ul class="menu">
+											<li>
+												<i class="chicken"></i>
+												<a ui-sref = "productList({category: 'Raw', subcat: 'Chicken'})">Chicken</a>
+											</li>
+											<li>
+												<i class="mutton"></i>
+												<a ui-sref = "productList({category: 'Raw', subcat: 'Fish'})">Fish</a>
+											</li>
+											<li>
+												<i class="fish"></i>
+												<a  ui-sref = "productList({category: 'Raw', subcat: 'Prawns'})">Prawns</a>
+											</li>
+											
+											<li>
+												<i class="marntd"></i>
+												<a ui-sref = "productList({category: 'Raw', subcat: 'Marinated'})">Marinated</a>
+											</li>
+
+										</ul>
+									</span>
+                                    <span class="forg menuWrp" ng-show = "loggedIn">
+										<span style = "color:#337ab7" class="vmiddle">HI, {{user.displayName}}</span>
+										<img class="dpInBLock vmiddle ic" src="https://static.zappfresh.com/images/arrow-orng.png" alt="" />
+										<ul class="menu">
+											<li>
+												<i class="chicken"></i>
+												<a ui-sref = "productList({category: 'Raw', subcat: 'Chicken'})">My orders</a>
+											</li>
+											<li>
+												<i class="mutton"></i>
+												<a ng-click = "logout();">Logout</a>
+											</li>
+											
+
+										</ul>
+									</span>
+									<span class="auth" ng-show = "!loggedIn">
+										<a ng-click = "showLoginModal()" data-pop="modalpop" class="authLogin" title="" style = "color:#337ab7">LOGIN/SIGNUP</a> 
+										
+									</span>
+									
+									<span class="quickclk">
+										<!-- mycart part -->
+										<div class="trig headCartTrig" data-custpopover="popover">
+											<a class="mycart" title="" ng-click="toggle()" style = "color:#337ab7">
+												<img src="https://static.zappfresh.com/images/cart-icon.png" alt="" />
+												<span>My Cart</span>
+												<b id="cartitemcount">{{myCartData.quantity}}</b>
+											</a>
+											<div class="popover animated flipInX" ng-show = "toggleHelp">
+												<div class="cartPopSummary" style = "width:100%;">
+													<div class="cartListwrp" id="cartlist" ng-show = "myCartData.quantity == 0">
+														<!-- List Item starts here -->
+														
+														
+														<div class="cartPopEmpty " id="cartpopempty">
+															<h2 class="f18 fMyrB">Shopping cart is empty</h2>
+															<hr>
+															<h4 class="f15 fMyr">Explore Categories</h4>
+															<ul>
+																<li>
+																	<a ui-sref = "productList({category: 'Raw', subcat: 'Chicken'})">
+																		<img src="https://static.zappfresh.com/images/cooking-today-icon1.png" alt="">
+																		<p class="ucase">Chicken</p>
+																	</a>
+																</li>
+																<li>
+																	<a ui-sref = "productList({category: 'Raw', subcat: 'Fish'})">
+																		<img src="https://static.zappfresh.com/images/cooking-today-icon2.png" alt="">
+																		<p class="ucase">Fish</p>
+																	</a>
+																</li>
+																<li>
+																	<a ui-sref = "productList({category: 'Raw', subcat: 'Prawns'})">
+																		<img src="https://static.zappfresh.com/images/cooking-today-icon3.png" alt="">
+																		<p class="ucase">Prawns</p>
+																	</a>
+																</li>
+																<li>
+																	<a ui-sref = "productList({category: 'Raw', subcat: 'Marinated'})">
+																		<img src="https://static.zappfresh.com/images/cooking-today-icon4.png" alt="">
+																		<p class="ucase">Marinated</p>
+																	</a>
+																</li>
+															</ul>
+														</div>
+														
+														<!-- List Item ends here -->
+													</div>
+													<div class="cartList row" ng-show = "myCartData.quantity != 0" id="proceedtocheckoutpart">
+                                                        <div ng-repeat = "item in myCartData.products track by item.name" class = "cartList row">
+                                                            <div class = 'col-md-2'><img src = "{{item.image}}" width = "50px"></div>
+                                                            <div class = 'col-md-7'>
+                                                                <div class = "col-md-12">
+                                                                    <p style = "font-size:130%;">{{item.name}}</p>
+                                                                </div>
+                                                                <div class = "col-md-12">
+                                                                    <div class="qtywrap" style = "margin-top:0;">
+                                                                        Quantity
+                                                                        <span>
+                                                                            <a class="qtychnger handp" title="" ng-click="itemDec(item.name)">-</a>
+                                                                            <span class="qtylbl" id="quantityproductdetail">{{item.quantity}}</span>
+                                                                            <a class="qtychnger handp" ng-click="itemInc(item.name)">+</a>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class = 'col-md-3'>
+                                                                <div class = "col-md-12">
+                                                                    <p style = "font-size:120%; font-weight:bold;">&#8377; {{item.price}}</p>
+                                                                </div>
+                                                                <div class = "col-md-12" style = "font-size:120%; padding-top:12%;">
+                                                                    
+                                                                    <span class = "glyphicon glyphicon-trash" ng-click = "removeItem(item.name)"></span>
+                                                                </div>
+                                                            </div>
+             
+                                                            <hr>
+                                                        </div>
+                                                        <hr>
+														<div class="col-md-9"><b class="f16 fnorm">Total payable amount</b></div>
+														<div class="col-md-3 f22 tright" id="itemnetpricecheckout">&#8377; {{myCartData.total}}</div>
+														<div class="clear20"></div>
+														<input type="button" name="" class="btn btn-primary wdFull" value="PROCEED TO CHECKOUT" tabindex="-1" ng-click="decide()" >
+													</div>
+												</div>
+											</div>
+
+										</div>
+
+										<div class="trig sideDrawwer" id="avatar" style="display:none">
+											<a href="#" title="" id="avatarpic"></a>
+										</div>
+									</span>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+	</div>
+	<div class="hdcvr"></div>
+	<!-- Application Header Ends Here -->
+
+<div class="mCategoryDrop animated slideInUp" style = "display:block; min-height:40%; max-height:65%; padding:20px;" ng-show = "mobCartShow">
+    <div ng-show = "myCartData.quantity != 0">
+        <div class = "row" ng-repeat = "item in myCartData.products" style = "padding-bottom:30px;">
+            <div class = "col-xs-3">
+                <img src = "{{item.image}}" width = "60px">
+            </div>
+            <div class = "col-xs-6">
+                <p>{{item.name}}</p>
+            </div>
+            <div class = "col-xs-3">
+                <p>{{item.price}}</p>
+            </div>
+                <div class = "col-xs-8">
+                        <div class="qtywrap" style = "margin-top:0;">
+                            Quantity
+                            <span>
+                                <a class="qtychnger handp" title="" ng-click="itemDec(item.name)">-</a>
+                                <span class="qtylbl" id="quantityproductdetail">{{item.quantity}}</span>
+                                <a class="qtychnger handp" ng-click="itemInc(item.name)">+</a>
+                            </span>
+                            <span class = "glyphicon glyphicon-trash pull-right" style = "margin-top:8px;" ng-click = "removeItem(item.name)"></span>
+                        </div>
+
+                </div>
+                <hr>
+        </div>
+        <div class = "row">
+            <br>
+            <div class = "col-xs-12">
+                <p><b>Total Payable amount : {{myCartData.total}}</b></p>
+                <button type = "button" class = "btn btn-primary btn-block" ng-click="decide()">Checkout</button>
+            </div>
+        </div>
+    </div>
+    <div class="cartListwrp" id="cartlist" ng-show = "myCartData.quantity == 0">
+														<!-- List Item starts here -->
+														
+														
+														<div class="cartPopEmpty " id="cartpopempty">
+															<h2 class="f18 fMyrB">Shopping cart is empty</h2>
+								
+														</div>
+														
+														<!-- List Item ends here -->
+													</div>
+	
+</div>
+
+<div class = "closeIt">
+
+	<!-- Application Content Ends Here -->
+	<div class="clear60"></div>
+	<div class="containerwrap">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-5 col-sm-12 prodImg" style = "padding:30px;">
+					<!-- <img src="images/big-product.jpg" alt=""> -->
+					<img src="{{datum.image}}" id="productimagedetail" class = "img-thumbnail">
+				</div>
+				<div class="col-md-5 col-sm-12 posrel">
+                    <h2 id="itemname" class="detailItemnm">{{datum.name}} </h2>
+					<span class="detailPgPrc" id="itemprice"></span>
+                    <br>
+					<span class="detailPgtrust"><img src="images/trust-icon.jpg" alt=""></span>
+					<p class="f18 fgreycoin" id="itemdesc">{{datum.short}}</p>
+					
+					<hr>
+					<div class="qtywrap">
+						<span class="fgreydark f18">Quantity: </span>
+						<span>
+							<a class="qtychnger handp" title="" ng-click="decQuantity()">-</a>
+							<span class="qtylbl" id="quantityproductdetail">{{quantity}}</span>
+							<a class="qtychnger handp" title="" ng-click="incQuantity()">+</a>
+						</span>
+					</div>
+                    
+					
+                    <h2 style = "color:#337ab7">&#8377; {{datum.price}}</h2>
+					<p class="fgreyteel f18" id="itemmetadata"></p>
+					<div class="clear10"></div>
+					<!--<p class="f16 fgreycoin"><i class="infoicon"></i><span></span></p>-->
+					<div class="clear30"></div>
+					<div class="row">
+						<div class="col-md-5">
+							<button type="submit" class="btn btn-primary temporder" ng-click="addToCart()">Add to Cart</button>
+						</div>
+						<div class="col-md-7" style="display:none">
+							<a href="#" class="favwrap" tabindex="0">
+								<i class="fav"></i>
+								<span>Make it Favourite</span>
+							</a>
+						</div>
+					</div>
+					<div class="clear30"></div>
+					<div class="socialShare" style="display:none">
+						<label>Share : </label>
+						<a href="#" class="facebook"></a>
+						<a href="#" class="gplus"></a>
+						<a href="#" class="twitter"></a>
+					</div>
+				</div>
+				<div class="col-md-2 col-sm-12"></div>
+			</div>
+			<div class="clear60 mclear10"></div>
+			<div class="row">
+				<div class="col-md-12 prodDesc">
+					<h3 class="fMyrB" style = "display:inline;">DESCRIPTION</h3><br>
+					<h2 class="" id="" style = "white-space: pre-wrap; display:inline;">
+                        {{datum.description}}
+					</h2>
+				</div>
+			</div>
+			
+			<div class="clear60 mclear30"></div>
+			
+		</div>
+	</div>
+	<!-- Related Product slider starts here -->
+	
+	<!-- Related Product slider ends here -->
+	<div class="clear60"></div>
+	<!-- Application Content Ends Here -->
+
+
+
+	<div class="mstickyfootBar">
+        <a class="mCatDropTrig" ng-click = "invertMobNav();"><i class="menuOrng"></i><span>CATEGORIES</span></a>
+        <a ng-click = "mobCartShowToggle();" class="mcartTrig"><i class="cartOrng"></i><span>CART</span><b id="mobilecartitemcount">{{myCartData.quantity}}</b></a>
+    </div>
+	<div class="mCategoryDrop animated slideInUp" style = "display:block;" ng-show = "mobNavShow">
+        <ul>
+            <a ui-sref = "productList({category: 'Raw', subcat: 'Chicken'})"><li><i class="chicken"></i><span>Chicken</span></li></a>
+            <a ui-sref = "productList({category: 'Raw', subcat: 'Fish'})"><li><i class="fish"></i><span>Fish</span></li></a>
+            <a ui-sref = "productList({category: 'Raw', subcat: 'Prawns'})"><li><i class="fish"></i><span>Prawns</span></li></a>
+            <a ui-sref = "productList({category: 'Raw', subcat: 'Marinated'})"><li><i class="marinated"></i><span>Marinated foods</span></li></a>
+
+        </ul>
+    </div>
+<!-- Footer section starts here -->
+<footer id="myFooter" style = "border-top:1px solid powderblue">
+        <div class="container">
+            <ul>
+                <li><a href="#"><img src = "images/navfresh.png"></a></li>
+                <li><a ui-sref = "aboutUs">ABOUT US</a></li>
+                <li><a ui-sref = "privacyPolicy">PRIVACY POLICY</a></li>
+                <li><a ui-sref = "contactus">CONTACT US</a></li>
+                <li><a ui-sref = "tnc">TERMS AND CONDITIONS</a></li>
+            </ul>
+        <p class="footer-copyright">© 2017, NavFresh - Farm Fresh Chicken, Seafood & Fish Home Delivery</p>
+        </div>
+        
+</footer>
+
+	<!-- Footer section starts here -->
+
+
+	<div class="modal-overlay"></div>
+	<div class="overlaybg"></div>
+
+
+	<div class="modalpopup loginModal animated fadeIn" id="loginpop">
+		<div class="modalbody">
+			<a class="cls" ng-click = "hideLoginModal()"></a>
+			<div class="cntnr dpTable">
+				<div class="lft dpTbCell vtop authImg"></div>
+				<div class="rgt vtop dpTbCell">
+					<div class="clear30"></div>
+					<div class="catitle f15 tcenter">LOGIN TO NAVFRESH</div>
+					<div class="clear30"></div>
+					<div class="clear30"></div>
+					<div class="clear30"></div>
+					<div class="socialWrp tcenter">
+                        <a class="btn btn-block btn-social btn-facebook" ng-click = "signInWithFacebook()">
+                            <span class="fa fa-facebook"></span> Sign in with Facebook
+                          </a>
+					</div>
+					<div class="clear20"></div>
+					<h2 class="f15 tcenter" id="genericerrorsignin">OR</h2>
+					<div class="clear20"></div>
+                    <a class="btn btn-block btn-social btn-google" ng-click = "signInWithGoogle()">
+                        <span class="fa fa-google"></span> Sign in with Google
+                    </a>
+
+				
+					<div class="clear20"></div>
+					<div class="clear30"></div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+    
+    <div class="modalpopup loginModal checkoutModal animated fadeIn" id="loginpop">
+		<div class="modalbody">
+			<a class="cls" ng-click = "hideCheckoutModal()"></a>
+			<div class="cntnr dpTable">
+				<div class="lft dpTbCell vtop authImg"></div>
+				<div class="rgt vtop dpTbCell">
+					<div class="clear30"></div>
+					<div class="catitle f15 tcenter">LOGIN TO NAVFRESH</div>
+					<div class="clear30"></div>
+					
+					<div class="socialWrp tcenter">
+                        <a class="btn btn-block btn-social btn-facebook" ng-click = "signInWithFacebook(true)">
+                            <span class="fa fa-facebook"></span> Sign in with Facebook
+                          </a>
+					</div>
+					<div class="clear20"></div>
+					
+					<div class="clear20"></div>
+                    <a class="btn btn-block btn-social btn-google" ng-click = "signInWithGoogle(true)">
+                        <span class="fa fa-google"></span> Sign in with Google
+                    </a>
+                    <div class="clear20"></div>
+				    <h2 class="f15 tcenter" id="genericerrorsignin">OR</h2>
+
+                    <hr>
+                    
+                    <div class="catitle f15 tcenter">CHECKOUT AS A GUEST</div>
+					<div class="clear30"></div>
+                    <div class = "row">
+                        <form class ="form-horizontal">
+                            <div class = "form-group" style = "padding-left:20px; padding-right:30px;">
+                                <input placeholder = "Email Address" type = "email" class = "form-control" ng-model = "email" required>
+                            </div>
+                            <button type = "button" class = "btn btn-primary btn-block" ng-click = "redirectCheckout()">Checkout</button>
+                        </form>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<div class="spinner" style="display: none" id="spinner">
+<img src="https://static.zappfresh.com/images/ajax-loader.gif" style="top: 50%;position: relative;" />
+</div>
+
+	
+
+	<div class="lftsticky"></div>
+	<div class="rgtsticky"></div>
+
+
+	<div id="searchoverlay" onclick="removeresultspane()" style="position: fixed; z-index: .5;left: 0px;right: 0px;top: 0px;bottom: 0px;display: none;"></div>
+
+	<div id="mCatDropTrigoverlay" onclick="removemcatpane()" style="position: fixed; z-index: 7;left: 0px;right: 0px;top: 0px;bottom: 0px;display: none; background: rgba(0, 0, 0, 0.7)"></div>
+
+
+</div>

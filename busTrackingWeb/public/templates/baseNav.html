@@ -1,0 +1,141 @@
+<div class="headerwrap">
+		<header id="header" class="">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 main">
+						<div class="leftPane">
+							<div class="logowrp">
+								<a href="/" class="logo">
+									<img src="https://static.zappfresh.com/images/logo.png" alt="" />
+								</a>
+								<a class="loc">
+									<i>
+										<img src="https://static.zappfresh.com/images/loc-icon.png" alt="" />
+									</i>
+									<span>
+										<a href="#locationpop" data-pop="modalpop" id="userLocation" class="f12" title="">Select Location</a>
+
+									</span>
+								</a>
+							</div>
+						</div>
+						<div class="rightPane">
+							<div class="generalhead">
+								<div class="headSearch">
+									<input type="text" class="srchInput" placeholder="Search chicken mutton etc" id="searchtext" onkeyup="searchkeyup()" onkeydown="searchkeydown()" onfocus="searchfocus()" onblur="searchblur()">
+									<button class="srchBtn" type="submit">Search Food</button>
+
+									<!-- search results -->
+									<div class="searchResult" style="display: none;" id="searchdiv">
+										<ul id="searchresults">
+
+
+										</ul>
+										<div class="vwAll" onclick="removeresultspane()"><a href="#">Close</a></div>
+									</div>
+									<!-- search results -->
+
+								</div>
+								<nav class="dpInBLock">
+									<span class="forg menuWrp">
+										<span class="vmiddle">OUR MENU</span>
+										<img class="dpInBLock vmiddle ic" src="https://static.zappfresh.com/images/arrow-orng.png" alt="" />
+										<ul class="menu">
+											<li>
+												<i class="chicken"></i>
+												<a ui-sref = "productList({category: 'Raw', subcat: 'Chicken'})>Chicken</a>
+											</li>
+											<li>
+												<i class="mutton"></i>
+												<a href="/mutton">Fish</a>
+											</li>
+											<li>
+												<i class="fish"></i>
+												<a href="/seafoods">Prawns</a>
+											</li>
+											
+											<li>
+												<i class="marntd"></i>
+												<a href="/marinated">Marinated</a>
+											</li>
+
+										</ul>
+									</span>
+									<span class="auth">
+										<a href="#loginpop" data-pop="modalpop" class="authLogin" title="">LOGIN</a> 
+										<span class="sepr">/</span> 
+
+										<a href="#signuppop" data-pop="modalpop" class="authSignup" title="">SIGNUP</a>
+									</span>
+									
+									<span class="quickclk">
+										<!-- mycart part -->
+										<div class="trig headCartTrig" data-custpopover="popover" onclick="fetchcartinit()">
+											<a href="#" class="mycart" title="">
+												<img src="https://static.zappfresh.com/images/cart-icon.png" alt="" />
+												<span>My Cart</span>
+												<b id="cartitemcount">0</b>
+											</a>
+											<div class="popover">
+												<div class="cartPopSummary">
+													<div class="cartListwrp" id="cartlist">
+														<!-- List Item starts here -->
+														
+														
+														<div class="cartPopEmpty" id="cartpopempty">
+															<h2 class="f18 fMyrB">Shopping cart is empty</h2>
+															<hr>
+															<h4 class="f15 fMyr">Explore Categories</h4>
+															<ul>
+																<li>
+																	<a ui-sref = "productList({category: 'Raw', subcat: 'Chicken'})>
+																		<img src="https://static.zappfresh.com/images/cooking-today-icon1.png" alt="">
+																		<p class="ucase">Chicken</p>
+																	</a>
+																</li>
+																<li>
+																	<a href="/seafoods">
+																		<img src="https://static.zappfresh.com/images/cooking-today-icon2.png" alt="">
+																		<p class="ucase">Sea Food</p>
+																	</a>
+																</li>
+																<li>
+																	<a href="/mutton">
+																		<img src="https://static.zappfresh.com/images/cooking-today-icon3.png" alt="">
+																		<p class="ucase">Mutton</p>
+																	</a>
+																</li>
+																<li>
+																	<a href="/precooked">
+																		<img src="https://static.zappfresh.com/images/cooking-today-icon4.png" alt="">
+																		<p class="ucase">Precooked</p>
+																	</a>
+																</li>
+															</ul>
+														</div>
+														
+														<!-- List Item ends here -->
+													</div>
+													<div class="row cartList" id="proceedtocheckoutpart" style="display: none;">
+														<div class="col-md-9"><b class="f16 fnorm">Total payable amount</b></div>
+														<div class="col-md-3 f22 tright" id="itemnetpricecheckout">&#8377; </div>
+														<div class="clear20"></div>
+														<input type="button" name="" class="btn btn-primary wdFull" value="PROCEED TO CHECKOUT" tabindex="-1" onclick="checkout()" >
+													</div>
+												</div>
+											</div>
+
+										</div>
+
+										<div class="trig sideDrawwer" id="avatar" style="display:none">
+											<a href="#" title="" id="avatarpic"></a>
+										</div>
+									</span>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+	</div>

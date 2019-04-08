@@ -1,0 +1,43 @@
+<div class = "container">
+    <div class="media row" ng-repeat = "item in chicken">
+      <div class="media-left col-md-3 col-xs-12">
+        <img src="{{item.image}}" class="media-object img-thumbnail" style="width:100%">
+      </div>
+      <div class="media-body" style = "padding-left:5%; padding-top:2%">
+        <h4 class="media-heading">{{item.name}}</h4>
+        <p style = "color:grey">{{item.short}}</p>
+        <p>{{item.description}}</p>
+          <button type = "button" class = "btn btn-primary" ng-click = "updateProduct(item.category, item.subcat, item.$id)">Update</button>
+          <button type = "button" class = "btn btn-primary" ng-click = "removeProduct(item.category, item.subcat, item.$id)">Remove</button>
+      </div>
+        <br><br>
+    </div>
+    
+    <div class="media row" ng-repeat = "item in fish">
+      <div class="media-left col-md-3 col-xs-12">
+        <img src="{{item.image}}" class="media-object img-thumbnail" style="width:100%">
+      </div>
+      <div class="media-body" style = "padding-left:5%; padding-top:2%">
+        <h4 class="media-heading">{{item.name}}</h4>
+        <p style = "color:grey">{{item.short}}</p>
+        <p>{{item.description}}</p>
+          <button type = "button" class = "btn btn-primary" ng-click = "updateProduct(item.category, item.subcat, item.$id)">Update</button>
+          <button type = "button" class = "btn btn-primary" ng-click = "removeProduct(item.category, item.subcat, item.$id)">Remove</button>
+      </div>
+        <br><br>
+    </div>
+    
+    <div class="media row" ng-repeat = "item in prawns">
+      <div class="media-left col-md-3 col-xs-12">
+        <img src="{{item.image}}" class="media-object img-thumbnail" style="width:100%">
+      </div>
+      <div class="media-body" style = "padding-left:5%; padding-top:2%">
+        <h4 class="media-heading">{{item.name}}</h4>
+        <p style = "color:grey">{{item.short}}</p>
+        <p>{{item.description}}</p>
+          <button type = "button" class = "btn btn-primary" ng-click = "updateProduct(item.category, item.subcat, item.$id)">Update</button>
+          <button type = "button" class = "btn btn-primary" ng-click = "removeProduct(item.category, item.subcat, item.$id)">Remove</button>
+      </div>
+        <br><br>
+    </div>
+</div>
